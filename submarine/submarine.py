@@ -1,5 +1,6 @@
 from os import supports_dir_fd
-from submarineCommand import submarineCommand
+from submarine.submarineCommand import submarineCommand
+from submarine.submarineDiagnostics import submarineDiagnostics
 
 class submarine:
     def __init__(self):
@@ -10,16 +11,19 @@ class submarine:
         self.horizontalPosition     = 0
         self.depth                  = 0
         self.aim                    = 0
+
+        self.diagnostics            = submarineDiagnostics()
+        
         print("Submarine Initialized")
 
     def read_depths_input(self):
-        with open('day1_input.txt') as f:
+        with open('inputFiles/day1_input.txt') as f:
             for x in f:
                 self.depths.append(int(x))
         f.close()
 
     def read_planned_course(self):
-        with open('day2_input.txt') as f:
+        with open('inputFiles/day2_input.txt') as f:
             for x in f:
                 command = x.split(" ")
                 subCmd = submarineCommand()
@@ -27,7 +31,7 @@ class submarine:
                 subCmd.distance     = int(command[1])
                 self.plannedCourse.append(subCmd)
         f.close()
-
+        
     def count_depth_increases(self, depths):
         res = 0
         for x in range(len(depths)):

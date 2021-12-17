@@ -1,4 +1,4 @@
-from submarine import submarine
+from submarine.submarine import submarine
 
 mySub = submarine()
 
@@ -12,8 +12,6 @@ mySub.count_depth_increases(mySub.depths)
 print("Day 1 Part 2 Answer:")
 mySub.sliding_window_depth_increase()
 mySub.count_depth_increases(mySub.slidingWindowDepths)
-
-
 
 #day 2
 mySub.read_planned_course()
