@@ -9,7 +9,7 @@ class submarine:
 
         self.horizontalPosition     = 0
         self.depth                  = 0
-
+        self.aim                    = 0
         print("Submarine Initialized")
 
     def read_depths_input(self):
@@ -58,7 +58,8 @@ class submarine:
     def follow_command(self, cmd: submarineCommand):
         if cmd.direction == "forward":
             self.horizontalPosition += cmd.distance
+            self.depth += self.aim * cmd.distance
         elif cmd.direction == "down":
-            self.depth += cmd.distance
+            self.aim += cmd.distance
         elif cmd.direction == "up":
-            self.depth -= cmd.distance
+            self.aim -= cmd.distance
