@@ -14,7 +14,8 @@ mySub.sliding_window_depth_increase()
 mySub.count_depth_increases(mySub.slidingWindowDepths)
 
 #day 2
-mySub.read_planned_course()
-mySub.follow_planned_course()
 print("Day 2 Part 1 Answer: ")
-print(mySub.horizontalPosition * mySub.depth)
+mySub.submarineCourse.executePlannedCourse()
+
+print("Day 3 Part 1 Answer:")
+mySub.diagnostics.readDiagnostics()
