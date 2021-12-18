@@ -75,17 +75,15 @@ class submarineDiagnostics:
             # Determine the current bit criteria (which is more common, 1's or 0's)
             count = self.__countBitsMatchingMaskInList(self.diagMask[i], rawCopy)
             if count >= len(rawCopy)/2:#more 1's than 0's
-                #keep the on bits (1's)
                 if onesOrZeros:
-                    maskEquate = self.diagMask[i]
+                    maskEquate = self.diagMask[i]#keep the on bits (1's)
                 else:
-                    maskEquate = 0    
+                    maskEquate = 0#keep the off bits (0's)
             else:
-                #keep the off bits (0's)
                 if onesOrZeros:
-                    maskEquate = 0
+                    maskEquate = 0#keep the off bits (0's)
                 else:
-                    maskEquate = self.diagMask[i]
+                    maskEquate = self.diagMask[i]#keep the on bits (1's)
 
             # loop rawCopy removing items that don't match the current
             # bit criteria that was determined above.

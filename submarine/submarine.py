@@ -1,6 +1,8 @@
 from os import supports_dir_fd
+from submarine.bingoSystem.bingoSystem import bingoSystem
 from submarine.submarineCourse import submarineCourse
 from submarine.submarineDiagnostics import submarineDiagnostics
+from submarine.bingoSystem.bingoSystem import bingoSystem
 
 class submarine:
     def __init__(self):
@@ -9,6 +11,7 @@ class submarine:
 
         self.submarineCourse        = submarineCourse()
         self.diagnostics            = submarineDiagnostics()
+        self.bingo                  = bingoSystem()
 
         print("Submarine Initialized")
 
