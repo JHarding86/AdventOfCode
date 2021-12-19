@@ -10,10 +10,17 @@ class bingoSystem:
 
         print("Bingo System Initialized")
 
-        winningCard = self.playBingo()
+        winningCard = self.playBingoFindingFirstWinner()
         winningCard.print()
         score = winningCard.calculateScore(self.winningCallout)
         print("Winning Card Score:", score)
+
+        self.cards = []
+        self.__readBingoInput()
+        lastWinningCard = self.playBingoFindingLastWinner()
+        lastWinningCard.print()
+        score = lastWinningCard.calculateScore(self.winningCallout)
+        print("Last Winning Card Score:", score)
 
     def __readBingoInput(self):
         with open('inputFiles/day4_input.txt') as f:
@@ -40,7 +47,7 @@ class bingoSystem:
 
         return card
 
-    def playBingo(self):
+    def playBingoFindingFirstWinner(self):
         for callout in self.callouts:
             for card in self.cards:
                 card.markNumber(callout)
@@ -48,3 +55,20 @@ class bingoSystem:
                 if card.checkForBingo():
                     self.winningCallout = callout
                     return card
+
+    def playBingoFindingLastWinner(self):
+        for callout in self.callouts:
+            i = 0
+            while i < len(self.cards):
+            # for i in range(len(self.cards)):
+                self.cards[i].markNumber(callout)
+                # card.print()
+                if self.cards[i].checkForBingo():
+                    if len(self.cards) == 1:
+                        self.winningCallout = callout
+                        return self.cards[i]
+                    else:
+                        self.cards.remove(self.cards[i])
+                else:
+                    i += 1
+                    
