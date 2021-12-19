@@ -3,6 +3,7 @@ from submarine.bingoSystem.bingoSystem import bingoSystem
 from submarine.submarineCourse import submarineCourse
 from submarine.submarineDiagnostics import submarineDiagnostics
 from submarine.bingoSystem.bingoSystem import bingoSystem
+from submarine.hydrothermalSystem.hydrothermalDetector import hydrothermalDetector
 
 class submarine:
     def __init__(self):
@@ -12,7 +13,8 @@ class submarine:
         self.submarineCourse        = submarineCourse()
         self.diagnostics            = submarineDiagnostics()
         self.bingo                  = bingoSystem()
-
+        self.hydrothermalDetector   = hydrothermalDetector()
+        
         print("Submarine Initialized")
 
     def read_depths_input(self):
