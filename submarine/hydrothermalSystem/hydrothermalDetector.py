@@ -12,8 +12,6 @@ class hydrothermalDetector:
         self.__setupMap()
         # self.__printMap()
 
-        # print(" ")
-
         self.__mapVents()
         # self.__printMap()
 
@@ -52,7 +50,35 @@ class hydrothermalDetector:
             elif vent.isVentVertical():
                 self.__mapVerticalVent(vent)
             else:
-                print("The vent is not vertical or horizontal, disregaurding it...")
+                self.__mapDiagonalVent(vent)
+
+    def __mapDiagonalVent(self, vent: hydrothermalVent):
+        x = vent.start[0]
+        y = vent.start[1]
+
+        # if x > vent.end[0]:
+        xEnd = vent.end[0]
+        # else:
+        #     xEnd = vent.end[0]+1
+
+        # if y > vent.end[1]:
+        yEnd = vent.end[1]
+        # else:
+        #     yEnd = vent.end[1]+1
+
+        while x != xEnd or y != yEnd:
+            self.map[y][x] += 1
+
+            if y < vent.end[1]+1:
+                y += 1
+            else:
+                y -= 1
+            if x < vent.end[0]+1:
+                x += 1
+            else:
+                x -= 1
+        
+        self.map[y][x] += 1
 
     def __mapHorizontalVent(self, vent: hydrothermalVent):
         row = self.map[vent.start[1]]
